@@ -7,35 +7,70 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A146FE551B0C1002009797FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146FE541B0C1002009797FD /* AppDelegate.swift */; };
-		A146FE571B0C1002009797FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146FE561B0C1002009797FD /* ViewController.swift */; };
-		A146FE5A1B0C1002009797FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A146FE581B0C1002009797FD /* Main.storyboard */; };
+		A104E65A1B0CCB5100F100EB /* CMNSURLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104E6591B0CCB5100F100EB /* CMNSURLExtension.swift */; };
+		A104E65D1B0CCC1100F100EB /* CMUIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104E65C1B0CCC1100F100EB /* CMUIViewExtension.swift */; };
+		A104E65F1B0CCC2000F100EB /* CMUIControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104E65E1B0CCC2000F100EB /* CMUIControlExtension.swift */; };
+		A104E6611B0CCC4200F100EB /* CMUIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104E6601B0CCC4200F100EB /* CMUIColorExtension.swift */; };
+		A104E6631B0CCC5300F100EB /* CMUIAlertViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104E6621B0CCC5300F100EB /* CMUIAlertViewExtension.swift */; };
+		A104E6651B0CCC6600F100EB /* CMNSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104E6641B0CCC6600F100EB /* CMNSDateExtension.swift */; };
+		A104E6691B0CCCAF00F100EB /* CMAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104E6681B0CCCAF00F100EB /* CMAsync.swift */; };
+		A104E66B1B0CD2E100F100EB /* CMTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104E66A1B0CD2E100F100EB /* CMTimer.swift */; };
+		A104E66D1B0D464B00F100EB /* CMNSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104E66C1B0D464B00F100EB /* CMNSObjectExtension.swift */; };
+		A104E6711B0D58E500F100EB /* CMNSThreadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104E6701B0D58E500F100EB /* CMNSThreadExtension.swift */; };
 		A146FE5C1B0C1002009797FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A146FE5B1B0C1002009797FD /* Images.xcassets */; };
 		A146FE5F1B0C1002009797FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A146FE5D1B0C1002009797FD /* LaunchScreen.xib */; };
-		A146FE6B1B0C1002009797FD /* CoffeeMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146FE6A1B0C1002009797FD /* CoffeeMobileTests.swift */; };
+		A146FE771B0C13E7009797FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146FE751B0C13E7009797FD /* AppDelegate.swift */; };
+		A146FE781B0C13E7009797FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146FE761B0C13E7009797FD /* ViewController.swift */; };
+		A146FE7E1B0C16B6009797FD /* CMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146FE7D1B0C16B6009797FD /* CMViewController.swift */; };
+		A146FE801B0C171F009797FD /* CMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146FE7F1B0C171F009797FD /* CMView.swift */; };
+		A146FE831B0C17AD009797FD /* CMContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146FE821B0C17AD009797FD /* CMContext.swift */; };
+		A146FE8E1B0C57F4009797FD /* CMRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146FE8D1B0C57F4009797FD /* CMRouter.swift */; };
+		A17AE2F61B0DE97D00775BE9 /* CMStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17AE2F51B0DE97D00775BE9 /* CMStringExtension.swift */; };
+		A17AE2F81B0DF04200775BE9 /* CMNSAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17AE2F71B0DF04200775BE9 /* CMNSAttributedStringExtension.swift */; };
+		A1C93C2F1B0E315000F740CF /* CMHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C93C2E1B0E315000F740CF /* CMHttp.swift */; };
+		A1C93C311B0E378B00F740CF /* CMZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C93C301B0E378B00F740CF /* CMZip.swift */; };
+		A1C93D201B0EDE9C00F740CF /* CMCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C93D1F1B0EDE9C00F740CF /* CMCrypto.swift */; };
+		A1C93D271B0F414C00F740CF /* CMNSDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C93D261B0F414C00F740CF /* CMNSDataExtension.swift */; };
+		A1C93D291B0FFD5C00F740CF /* CMWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C93D281B0FFD5C00F740CF /* CMWebViewController.swift */; };
+		A1E35FA01B10D000009538E2 /* libminizip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C93D231B0EE0D800F740CF /* libminizip.a */; };
+		A1E35FA21B10D506009538E2 /* CMXMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E35FA11B10D506009538E2 /* CMXMLNode.swift */; };
+		A1E35FC01B114DD3009538E2 /* CMConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E35FBF1B114DD3009538E2 /* CMConstraint.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A146FE651B0C1002009797FD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A146FE471B0C1002009797FD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A146FE4E1B0C1002009797FD;
-			remoteInfo = CoffeeMobile;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		A104E6591B0CCB5100F100EB /* CMNSURLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMNSURLExtension.swift; sourceTree = "<group>"; };
+		A104E65C1B0CCC1100F100EB /* CMUIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMUIViewExtension.swift; sourceTree = "<group>"; };
+		A104E65E1B0CCC2000F100EB /* CMUIControlExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMUIControlExtension.swift; sourceTree = "<group>"; };
+		A104E6601B0CCC4200F100EB /* CMUIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMUIColorExtension.swift; sourceTree = "<group>"; };
+		A104E6621B0CCC5300F100EB /* CMUIAlertViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMUIAlertViewExtension.swift; sourceTree = "<group>"; };
+		A104E6641B0CCC6600F100EB /* CMNSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMNSDateExtension.swift; sourceTree = "<group>"; };
+		A104E6681B0CCCAF00F100EB /* CMAsync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMAsync.swift; sourceTree = "<group>"; };
+		A104E66A1B0CD2E100F100EB /* CMTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMTimer.swift; sourceTree = "<group>"; };
+		A104E66C1B0D464B00F100EB /* CMNSObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMNSObjectExtension.swift; sourceTree = "<group>"; };
+		A104E6701B0D58E500F100EB /* CMNSThreadExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMNSThreadExtension.swift; sourceTree = "<group>"; };
 		A146FE4F1B0C1002009797FD /* CoffeeMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A146FE531B0C1002009797FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A146FE541B0C1002009797FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A146FE561B0C1002009797FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A146FE591B0C1002009797FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A146FE5B1B0C1002009797FD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A146FE5E1B0C1002009797FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		A146FE641B0C1002009797FD /* CoffeeMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeeMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A146FE691B0C1002009797FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A146FE6A1B0C1002009797FD /* CoffeeMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeMobileTests.swift; sourceTree = "<group>"; };
+		A146FE751B0C13E7009797FD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A146FE761B0C13E7009797FD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A146FE7D1B0C16B6009797FD /* CMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMViewController.swift; sourceTree = "<group>"; };
+		A146FE7F1B0C171F009797FD /* CMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMView.swift; sourceTree = "<group>"; };
+		A146FE821B0C17AD009797FD /* CMContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMContext.swift; sourceTree = "<group>"; };
+		A146FE8D1B0C57F4009797FD /* CMRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMRouter.swift; sourceTree = "<group>"; };
+		A17AE2F51B0DE97D00775BE9 /* CMStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMStringExtension.swift; sourceTree = "<group>"; };
+		A17AE2F71B0DF04200775BE9 /* CMNSAttributedStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMNSAttributedStringExtension.swift; sourceTree = "<group>"; };
+		A1C93C2E1B0E315000F740CF /* CMHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMHttp.swift; sourceTree = "<group>"; };
+		A1C93C301B0E378B00F740CF /* CMZip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMZip.swift; sourceTree = "<group>"; };
+		A1C93C331B0E3A2F00F740CF /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		A1C93D1D1B0EC73C00F740CF /* libminizip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libminizip.a; path = minizip/libminizip.a; sourceTree = SOURCE_ROOT; };
+		A1C93D1F1B0EDE9C00F740CF /* CMCrypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMCrypto.swift; sourceTree = "<group>"; };
+		A1C93D211B0EE0CC00F740CF /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
+		A1C93D231B0EE0D800F740CF /* libminizip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libminizip.a; path = CustomSwiftModule/MiniZip/libminizip.a; sourceTree = SOURCE_ROOT; };
+		A1C93D261B0F414C00F740CF /* CMNSDataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMNSDataExtension.swift; sourceTree = "<group>"; };
+		A1C93D281B0FFD5C00F740CF /* CMWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMWebViewController.swift; sourceTree = "<group>"; };
+		A1E35FA11B10D506009538E2 /* CMXMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMXMLNode.swift; sourceTree = "<group>"; };
+		A1E35FBF1B114DD3009538E2 /* CMConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMConstraint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,24 +78,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A146FE611B0C1002009797FD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				A1E35FA01B10D000009538E2 /* libminizip.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A104E6581B0CCB5100F100EB /* NSFundationExtension */ = {
+			isa = PBXGroup;
+			children = (
+				A104E6591B0CCB5100F100EB /* CMNSURLExtension.swift */,
+				A104E6641B0CCC6600F100EB /* CMNSDateExtension.swift */,
+				A104E66C1B0D464B00F100EB /* CMNSObjectExtension.swift */,
+				A104E6701B0D58E500F100EB /* CMNSThreadExtension.swift */,
+				A1C93D261B0F414C00F740CF /* CMNSDataExtension.swift */,
+			);
+			path = NSFundationExtension;
+			sourceTree = "<group>";
+		};
+		A104E65B1B0CCBEC00F100EB /* UIKitExtension */ = {
+			isa = PBXGroup;
+			children = (
+				A104E65C1B0CCC1100F100EB /* CMUIViewExtension.swift */,
+				A104E65E1B0CCC2000F100EB /* CMUIControlExtension.swift */,
+				A104E6601B0CCC4200F100EB /* CMUIColorExtension.swift */,
+				A104E6621B0CCC5300F100EB /* CMUIAlertViewExtension.swift */,
+			);
+			path = UIKitExtension;
+			sourceTree = "<group>";
+		};
 		A146FE461B0C1002009797FD = {
 			isa = PBXGroup;
 			children = (
 				A146FE511B0C1002009797FD /* CoffeeMobile */,
-				A146FE671B0C1002009797FD /* CoffeeMobileTests */,
+				A1C93C321B0E3A1300F740CF /* Frameworks */,
 				A146FE501B0C1002009797FD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				A146FE4F1B0C1002009797FD /* CoffeeMobile.app */,
-				A146FE641B0C1002009797FD /* CoffeeMobileTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,9 +128,8 @@
 		A146FE511B0C1002009797FD /* CoffeeMobile */ = {
 			isa = PBXGroup;
 			children = (
-				A146FE541B0C1002009797FD /* AppDelegate.swift */,
-				A146FE561B0C1002009797FD /* ViewController.swift */,
-				A146FE581B0C1002009797FD /* Main.storyboard */,
+				A146FE791B0C166F009797FD /* Base */,
+				A146FE741B0C13E7009797FD /* Application */,
 				A146FE5B1B0C1002009797FD /* Images.xcassets */,
 				A146FE5D1B0C1002009797FD /* LaunchScreen.xib */,
 				A146FE521B0C1002009797FD /* Supporting Files */,
@@ -95,21 +145,88 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A146FE671B0C1002009797FD /* CoffeeMobileTests */ = {
+		A146FE741B0C13E7009797FD /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				A146FE6A1B0C1002009797FD /* CoffeeMobileTests.swift */,
-				A146FE681B0C1002009797FD /* Supporting Files */,
+				A146FE751B0C13E7009797FD /* AppDelegate.swift */,
+				A146FE761B0C13E7009797FD /* ViewController.swift */,
 			);
-			path = CoffeeMobileTests;
+			path = Application;
 			sourceTree = "<group>";
 		};
-		A146FE681B0C1002009797FD /* Supporting Files */ = {
+		A146FE791B0C166F009797FD /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				A146FE691B0C1002009797FD /* Info.plist */,
+				A146FE8C1B0C57CD009797FD /* Router */,
+				A146FE7A1B0C166F009797FD /* Base */,
+				A146FE811B0C1795009797FD /* Context */,
+				A146FE7C1B0C166F009797FD /* Utils */,
 			);
-			name = "Supporting Files";
+			path = Base;
+			sourceTree = "<group>";
+		};
+		A146FE7A1B0C166F009797FD /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A146FE7D1B0C16B6009797FD /* CMViewController.swift */,
+				A146FE7F1B0C171F009797FD /* CMView.swift */,
+				A1C93D281B0FFD5C00F740CF /* CMWebViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		A146FE7C1B0C166F009797FD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A1C93C2E1B0E315000F740CF /* CMHttp.swift */,
+				A104E6681B0CCCAF00F100EB /* CMAsync.swift */,
+				A104E66A1B0CD2E100F100EB /* CMTimer.swift */,
+				A1C93C301B0E378B00F740CF /* CMZip.swift */,
+				A1C93D1F1B0EDE9C00F740CF /* CMCrypto.swift */,
+				A1E35FA11B10D506009538E2 /* CMXMLNode.swift */,
+				A1E35FBF1B114DD3009538E2 /* CMConstraint.swift */,
+				A17AE2F41B0DE96B00775BE9 /* SwiftExtension */,
+				A104E65B1B0CCBEC00F100EB /* UIKitExtension */,
+				A104E6581B0CCB5100F100EB /* NSFundationExtension */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A146FE811B0C1795009797FD /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				A146FE821B0C17AD009797FD /* CMContext.swift */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
+		A146FE8C1B0C57CD009797FD /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				A146FE8D1B0C57F4009797FD /* CMRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		A17AE2F41B0DE96B00775BE9 /* SwiftExtension */ = {
+			isa = PBXGroup;
+			children = (
+				A17AE2F51B0DE97D00775BE9 /* CMStringExtension.swift */,
+				A17AE2F71B0DF04200775BE9 /* CMNSAttributedStringExtension.swift */,
+			);
+			path = SwiftExtension;
+			sourceTree = "<group>";
+		};
+		A1C93C321B0E3A1300F740CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A1C93D231B0EE0D800F740CF /* libminizip.a */,
+				A1C93D211B0EE0CC00F740CF /* libcommonCrypto.dylib */,
+				A1C93D1D1B0EC73C00F740CF /* libminizip.a */,
+				A1C93C331B0E3A2F00F740CF /* libz.1.2.5.dylib */,
+			);
+			name = Frameworks;
+			path = CoffeeMobile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,24 +249,6 @@
 			productReference = A146FE4F1B0C1002009797FD /* CoffeeMobile.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A146FE631B0C1002009797FD /* CoffeeMobileTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A146FE711B0C1002009797FD /* Build configuration list for PBXNativeTarget "CoffeeMobileTests" */;
-			buildPhases = (
-				A146FE601B0C1002009797FD /* Sources */,
-				A146FE611B0C1002009797FD /* Frameworks */,
-				A146FE621B0C1002009797FD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A146FE661B0C1002009797FD /* PBXTargetDependency */,
-			);
-			name = CoffeeMobileTests;
-			productName = CoffeeMobileTests;
-			productReference = A146FE641B0C1002009797FD /* CoffeeMobileTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -161,10 +260,6 @@
 				TargetAttributes = {
 					A146FE4E1B0C1002009797FD = {
 						CreatedOnToolsVersion = 6.3.1;
-					};
-					A146FE631B0C1002009797FD = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = A146FE4E1B0C1002009797FD;
 					};
 				};
 			};
@@ -182,7 +277,6 @@
 			projectRoot = "";
 			targets = (
 				A146FE4E1B0C1002009797FD /* CoffeeMobile */,
-				A146FE631B0C1002009797FD /* CoffeeMobileTests */,
 			);
 		};
 /* End PBXProject section */
@@ -192,16 +286,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A146FE5A1B0C1002009797FD /* Main.storyboard in Resources */,
 				A146FE5F1B0C1002009797FD /* LaunchScreen.xib in Resources */,
 				A146FE5C1B0C1002009797FD /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A146FE621B0C1002009797FD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,38 +298,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A146FE571B0C1002009797FD /* ViewController.swift in Sources */,
-				A146FE551B0C1002009797FD /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A146FE601B0C1002009797FD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A146FE6B1B0C1002009797FD /* CoffeeMobileTests.swift in Sources */,
+				A17AE2F61B0DE97D00775BE9 /* CMStringExtension.swift in Sources */,
+				A104E6711B0D58E500F100EB /* CMNSThreadExtension.swift in Sources */,
+				A104E6651B0CCC6600F100EB /* CMNSDateExtension.swift in Sources */,
+				A104E66D1B0D464B00F100EB /* CMNSObjectExtension.swift in Sources */,
+				A1C93C2F1B0E315000F740CF /* CMHttp.swift in Sources */,
+				A1C93C311B0E378B00F740CF /* CMZip.swift in Sources */,
+				A1C93D271B0F414C00F740CF /* CMNSDataExtension.swift in Sources */,
+				A146FE771B0C13E7009797FD /* AppDelegate.swift in Sources */,
+				A104E6631B0CCC5300F100EB /* CMUIAlertViewExtension.swift in Sources */,
+				A1E35FA21B10D506009538E2 /* CMXMLNode.swift in Sources */,
+				A146FE8E1B0C57F4009797FD /* CMRouter.swift in Sources */,
+				A146FE7E1B0C16B6009797FD /* CMViewController.swift in Sources */,
+				A146FE801B0C171F009797FD /* CMView.swift in Sources */,
+				A146FE781B0C13E7009797FD /* ViewController.swift in Sources */,
+				A1C93D201B0EDE9C00F740CF /* CMCrypto.swift in Sources */,
+				A104E65A1B0CCB5100F100EB /* CMNSURLExtension.swift in Sources */,
+				A104E65D1B0CCC1100F100EB /* CMUIViewExtension.swift in Sources */,
+				A104E6691B0CCCAF00F100EB /* CMAsync.swift in Sources */,
+				A1C93D291B0FFD5C00F740CF /* CMWebViewController.swift in Sources */,
+				A1E35FC01B114DD3009538E2 /* CMConstraint.swift in Sources */,
+				A104E6611B0CCC4200F100EB /* CMUIColorExtension.swift in Sources */,
+				A104E65F1B0CCC2000F100EB /* CMUIControlExtension.swift in Sources */,
+				A17AE2F81B0DF04200775BE9 /* CMNSAttributedStringExtension.swift in Sources */,
+				A104E66B1B0CD2E100F100EB /* CMTimer.swift in Sources */,
+				A146FE831B0C17AD009797FD /* CMContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		A146FE661B0C1002009797FD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A146FE4E1B0C1002009797FD /* CoffeeMobile */;
-			targetProxy = A146FE651B0C1002009797FD /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		A146FE581B0C1002009797FD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A146FE591B0C1002009797FD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A146FE5D1B0C1002009797FD /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -291,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -330,7 +415,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -342,9 +427,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = CoffeeMobile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+					"$(PROJECT_DIR)/CustomSwiftModule/MiniZip",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = $SRCROOT/CustomSwiftModule;
 			};
 			name = Debug;
 		};
@@ -352,43 +448,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = CoffeeMobile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		A146FE721B0C1002009797FD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
+				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+					"$(PROJECT_DIR)/CustomSwiftModule/MiniZip",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CoffeeMobileTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoffeeMobile.app/CoffeeMobile";
-			};
-			name = Debug;
-		};
-		A146FE731B0C1002009797FD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CoffeeMobileTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoffeeMobile.app/CoffeeMobile";
+				SWIFT_INCLUDE_PATHS = $SRCROOT/CustomSwiftModule;
 			};
 			name = Release;
 		};
@@ -411,14 +484,7 @@
 				A146FE701B0C1002009797FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		A146FE711B0C1002009797FD /* Build configuration list for PBXNativeTarget "CoffeeMobileTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A146FE721B0C1002009797FD /* Debug */,
-				A146FE731B0C1002009797FD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

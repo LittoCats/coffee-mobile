@@ -8,14 +8,25 @@
 
 import UIKit
 
+typealias Async = CMAsync
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var context: CMContext = CMContext()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+//        var vc = CMViewController()
+//        vc.URI = NSURL(string: "http://127.0.0.1:8888/index.coffee")
+        var vc = ViewController()
+        window?.rootViewController = vc
+        window?.backgroundColor = UIColor.whiteColor()
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

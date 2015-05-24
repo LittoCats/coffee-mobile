@@ -1,0 +1,4 @@
+module XMLNode {
+  header "xmlnode.h"
+  export *
+}

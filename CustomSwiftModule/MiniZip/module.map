@@ -1,0 +1,4 @@
+module MiniZip {
+  header "minizip.h"
+  export *
+}

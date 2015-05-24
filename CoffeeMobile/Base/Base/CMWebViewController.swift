@@ -1,18 +1,19 @@
 //
-//  ViewController.swift
+//  CMWebViewController.swift
 //  CoffeeMobile
 //
-//  Created by 程巍巍 on 5/20/15.
+//  Created by 程巍巍 on 5/23/15.
 //  Copyright (c) 2015 Littocats. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class CMWebViewController: CMViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +21,4 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
 }
-
