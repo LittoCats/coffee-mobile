@@ -9,6 +9,7 @@
 import Foundation
 import JavaScriptCore
 
+typealias CMJSContext = JSContext
 extension JSContext {
     typealias JSFunc = (arguments: [JSValue])->Void
     
@@ -29,7 +30,40 @@ extension JSContext {
         var obj: JSObjectRef = JSValueToObject(self.JSGlobalContextRef, value.JSValueRef, exception)
         return JSObjectIsFunction(self.JSGlobalContextRef, obj)
     }
+    
+    static func defaultContext() ->CMJSContext {
+        
+        struct Static {
+            static var onceToken: dispatch_once_t = 0
+            static var context: CMJSContext!
+        }
+        dispatch_once(&Static.onceToken, { () -> Void in
+            Static.context = CMJSContext()
+            
+            // 添加 exception 回调
+            Static.context.exceptionHandler = {
+                println("CMContext Exception >>\n\($1.toString())\n\($1.toObject())")
+            }
+            //  添加 console.log 回调
+            var console = Static.context.evaluateScript("(function(){this.console = typeof this.console != 'undefined' ? this.console : {}; return this.console})(this)")
+            var log: @objc_block ()->Void = {
+                println(JSContext.currentArguments())
+            }
+            console.setValue(unsafeBitCast(log, AnyObject.self), forProperty: "log")
+            
+            // 添加 coffeescript 编译支持
+            var data = NSData(base64EncodedString: CoffeeScriptLibrary, options: NSDataBase64DecodingOptions.allZeros)
+            data = data!.inflate()
+            var libCoffee = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
+            Static.context.evaluateScript(libCoffee)
+        })
+        return Static.context
+    }
 }
+
+/**
+MARK:
+*/
 typealias CMValue = JSValue
 extension CMValue {
     var isFunc: Bool {
@@ -45,31 +79,22 @@ extension CMValue {
     }
 }
 
-class CMContext: JSContext {
-    override init!() {
-        super.init()
+/**
+MARK:
+*/
+class CMContext {
+    var value: CMValue
+    
+    init(value: CMValue){
+        self.value = value
     }
-    override init!(virtualMachine: JSVirtualMachine!) {
-        super.init(virtualMachine: virtualMachine)
-        
-        self.exceptionHandler = {
-            println("CMContext Exception >>\n\($1.toString())\n\($1.toObject())")
+    
+    subscript(name: String) ->CMValue {
+        get{
+            return value.objectForKeyedSubscript(name)
+        }set{
+            value.setObject(newValue, forKeyedSubscript: name)
         }
-        
-        var console = self.evaluateScript("(function(){this.console = typeof this.console != 'undefined' ? this.console : {}; return this.console})(this)")
-        var log: @objc_block ()->Void = {
-            println(JSContext.currentArguments())
-        }
-        console.setValue(unsafeBitCast(log, AnyObject.self), forProperty: "log")
-    }
-}
-
-
-extension CMContext {
-    var LibCoffee: String {
-        var data = NSData(base64EncodedString: CoffeeScriptLibrary, options: NSDataBase64DecodingOptions.allZeros)
-        data = data!.inflate()
-        return NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
     }
 }
 

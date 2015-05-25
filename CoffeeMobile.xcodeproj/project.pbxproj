@@ -35,6 +35,8 @@
 		A1E35FA01B10D000009538E2 /* libminizip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C93D231B0EE0D800F740CF /* libminizip.a */; };
 		A1E35FA21B10D506009538E2 /* CMXMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E35FA11B10D506009538E2 /* CMXMLNode.swift */; };
 		A1E35FC01B114DD3009538E2 /* CMConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E35FBF1B114DD3009538E2 /* CMConstraint.swift */; };
+		A1F6AA431B12AD2600E928EF /* libxmlnode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F6AA3D1B11AFFC00E928EF /* libxmlnode.a */; };
+		A1F6AA451B12AD2D00E928EF /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F6AA441B12AD2D00E928EF /* libxml2.2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,9 @@
 		A1C93D281B0FFD5C00F740CF /* CMWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMWebViewController.swift; sourceTree = "<group>"; };
 		A1E35FA11B10D506009538E2 /* CMXMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMXMLNode.swift; sourceTree = "<group>"; };
 		A1E35FBF1B114DD3009538E2 /* CMConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMConstraint.swift; sourceTree = "<group>"; };
+		A1F6AA3D1B11AFFC00E928EF /* libxmlnode.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxmlnode.a; path = CustomSwiftModule/XMLNode/libxmlnode.a; sourceTree = SOURCE_ROOT; };
+		A1F6AA3F1B1289D300E928EF /* libxmlnode.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxmlnode.dylib; path = CustomSwiftModule/XMLNode/libxmlnode.dylib; sourceTree = SOURCE_ROOT; };
+		A1F6AA441B12AD2D00E928EF /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1F6AA451B12AD2D00E928EF /* libxml2.2.dylib in Frameworks */,
+				A1F6AA431B12AD2600E928EF /* libxmlnode.a in Frameworks */,
 				A1E35FA01B10D000009538E2 /* libminizip.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +227,9 @@
 		A1C93C321B0E3A1300F740CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1F6AA441B12AD2D00E928EF /* libxml2.2.dylib */,
+				A1F6AA3F1B1289D300E928EF /* libxmlnode.dylib */,
+				A1F6AA3D1B11AFFC00E928EF /* libxmlnode.a */,
 				A1C93D231B0EE0D800F740CF /* libminizip.a */,
 				A1C93D211B0EE0CC00F740CF /* libcommonCrypto.dylib */,
 				A1C93D1D1B0EC73C00F740CF /* libminizip.a */,
@@ -438,6 +448,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)/CustomSwiftModule/MiniZip",
+					"$(PROJECT_DIR)/CustomSwiftModule/XMLNode",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = $SRCROOT/CustomSwiftModule;
@@ -459,6 +470,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)/CustomSwiftModule/MiniZip",
+					"$(PROJECT_DIR)/CustomSwiftModule/XMLNode",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = $SRCROOT/CustomSwiftModule;

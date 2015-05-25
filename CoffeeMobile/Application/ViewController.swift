@@ -23,8 +23,8 @@ class ViewController: UIViewController {
         
         self.view.addSubview(button)
         
-        self.view.addConstraint(CMConstraint(button).CenterX.Equal.to(self.view).CenterX.constraint())
-        self.view.addConstraint(CMConstraint(button).CenterY.Equal.to(self.view).CenterY.constraint())
+        CMLayout(button).CenterX.Equal.to(self.view).CenterX.constraint().addTo(self.view)
+        CMLayout(button).CenterY.Equal.to(self.view).CenterY.constraint().addTo(self.view)
     }
     
     

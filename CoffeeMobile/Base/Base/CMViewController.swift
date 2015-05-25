@@ -13,18 +13,7 @@ class CMViewController: UIViewController {
     /**
     MARK: 所有 CMViewController (及其子类) 的实例，共用一个 CMContext
     */
-    private var GlobalContext = { ()->CMContext in
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-            static var context: CMContext!
-        }
-        dispatch_once(&Static.onceToken, { () -> Void in
-            Static.context = CMContext()
-            Static.context.evaluateScript(Static.context.LibCoffee)
-        })
-        return Static.context
-    }()
-    
+    private var GlobalContext = CMJSContext.defaultContext()
     private func compile(#coffee: String)->String {
         var compiler = GlobalContext.evaluateScript("CoffeeScript.compile")
         if compiler.isFunc {
@@ -39,7 +28,7 @@ class CMViewController: UIViewController {
     page context ,  实际上是 GlobalContext 中的一个作用域
     */
     
-    var context: CMValue!
+    var context: CMContext!
     
     /**
     MARK:
@@ -55,44 +44,37 @@ class CMViewController: UIViewController {
                     }
                 }
                 var js = "new function(){\(source)}"
-                context = GlobalContext.evaluateScript(js)
+                context = CMContext(value: GlobalContext.evaluateScript(js))
             }
             assert(context != nil, "CMViewController error")
         }
-    }
-    
-    /**
-    MARK: 获取当 context 的回调函数
-    */
-    subscript(name: String) -> ((arguments: AnyObject...)->CMValue!)? {
-        return context.objectForKeyedSubscript(name).toClosure()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self["viewDidLoad"]?()
+        context["viewDidLoad"].toClosure()?()
         
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self["viewWillAppear"]?()
+        context["viewWillAppear"].toClosure()?()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self["viewDidAppear"]?()
+        context["viewDidAppear"].toClosure()?()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self["viewWillDisappear"]?()
+        context["viewWillDisappear"].toClosure()?()
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        self["viewDidDisappear"]?()
+        context["viewDidDisappear"].toClosure()?()
     }
 
     override func didReceiveMemoryWarning() {
