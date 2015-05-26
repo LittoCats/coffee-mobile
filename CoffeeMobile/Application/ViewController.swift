@@ -8,23 +8,27 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: CMViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        var button = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        button.setTitle("CMConstraint", forState: UIControlState.Normal)
+        var button = UILabel()
+//        button.setTitle("CMConstraint", forState: UIControlState.Normal)
         
-        button.backgroundColor = UIColor.yellowColor()
         button.sizeToFit()
         
         self.view.addSubview(button)
         
         CMLayout(button).CenterX.Equal.to(self.view).CenterX.constraint().addTo(self.view)
         CMLayout(button).CenterY.Equal.to(self.view).CenterY.constraint().addTo(self.view)
+        
+        Async.main { () -> Void in
+            var attrString = NSAttributedString(xml: "<size=29 color = #FF0000 st>text<size=15 color=#00FF00 ul=1> Label</></>")
+            button.attributedText = attrString
+        }
     }
     
     

@@ -25,8 +25,8 @@
 		A146FE801B0C171F009797FD /* CMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146FE7F1B0C171F009797FD /* CMView.swift */; };
 		A146FE831B0C17AD009797FD /* CMContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146FE821B0C17AD009797FD /* CMContext.swift */; };
 		A146FE8E1B0C57F4009797FD /* CMRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146FE8D1B0C57F4009797FD /* CMRouter.swift */; };
+		A15ADC491B1402480058B3E4 /* CMNSAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15ADC481B1402480058B3E4 /* CMNSAttributedStringExtension.swift */; };
 		A17AE2F61B0DE97D00775BE9 /* CMStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17AE2F51B0DE97D00775BE9 /* CMStringExtension.swift */; };
-		A17AE2F81B0DF04200775BE9 /* CMNSAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17AE2F71B0DF04200775BE9 /* CMNSAttributedStringExtension.swift */; };
 		A1C93C2F1B0E315000F740CF /* CMHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C93C2E1B0E315000F740CF /* CMHttp.swift */; };
 		A1C93C311B0E378B00F740CF /* CMZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C93C301B0E378B00F740CF /* CMZip.swift */; };
 		A1C93D201B0EDE9C00F740CF /* CMCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C93D1F1B0EDE9C00F740CF /* CMCrypto.swift */; };
@@ -60,8 +60,8 @@
 		A146FE7F1B0C171F009797FD /* CMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMView.swift; sourceTree = "<group>"; };
 		A146FE821B0C17AD009797FD /* CMContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMContext.swift; sourceTree = "<group>"; };
 		A146FE8D1B0C57F4009797FD /* CMRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMRouter.swift; sourceTree = "<group>"; };
+		A15ADC481B1402480058B3E4 /* CMNSAttributedStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMNSAttributedStringExtension.swift; sourceTree = "<group>"; };
 		A17AE2F51B0DE97D00775BE9 /* CMStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMStringExtension.swift; sourceTree = "<group>"; };
-		A17AE2F71B0DF04200775BE9 /* CMNSAttributedStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMNSAttributedStringExtension.swift; sourceTree = "<group>"; };
 		A1C93C2E1B0E315000F740CF /* CMHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMHttp.swift; sourceTree = "<group>"; };
 		A1C93C301B0E378B00F740CF /* CMZip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMZip.swift; sourceTree = "<group>"; };
 		A1C93C331B0E3A2F00F740CF /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
@@ -107,6 +107,7 @@
 		A104E65B1B0CCBEC00F100EB /* UIKitExtension */ = {
 			isa = PBXGroup;
 			children = (
+				A15ADC481B1402480058B3E4 /* CMNSAttributedStringExtension.swift */,
 				A104E65C1B0CCC1100F100EB /* CMUIViewExtension.swift */,
 				A104E65E1B0CCC2000F100EB /* CMUIControlExtension.swift */,
 				A104E6601B0CCC4200F100EB /* CMUIColorExtension.swift */,
@@ -219,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				A17AE2F51B0DE97D00775BE9 /* CMStringExtension.swift */,
-				A17AE2F71B0DF04200775BE9 /* CMNSAttributedStringExtension.swift */,
 			);
 			path = SwiftExtension;
 			sourceTree = "<group>";
@@ -325,12 +325,12 @@
 				A1C93D201B0EDE9C00F740CF /* CMCrypto.swift in Sources */,
 				A104E65A1B0CCB5100F100EB /* CMNSURLExtension.swift in Sources */,
 				A104E65D1B0CCC1100F100EB /* CMUIViewExtension.swift in Sources */,
+				A15ADC491B1402480058B3E4 /* CMNSAttributedStringExtension.swift in Sources */,
 				A104E6691B0CCCAF00F100EB /* CMAsync.swift in Sources */,
 				A1C93D291B0FFD5C00F740CF /* CMWebViewController.swift in Sources */,
 				A1E35FC01B114DD3009538E2 /* CMConstraint.swift in Sources */,
 				A104E6611B0CCC4200F100EB /* CMUIColorExtension.swift in Sources */,
 				A104E65F1B0CCC2000F100EB /* CMUIControlExtension.swift in Sources */,
-				A17AE2F81B0DF04200775BE9 /* CMNSAttributedStringExtension.swift in Sources */,
 				A104E66B1B0CD2E100F100EB /* CMTimer.swift in Sources */,
 				A146FE831B0C17AD009797FD /* CMContext.swift in Sources */,
 			);
@@ -452,6 +452,8 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = $SRCROOT/CustomSwiftModule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 			};
 			name = Debug;
 		};
@@ -474,6 +476,8 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = $SRCROOT/CustomSwiftModule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
+				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 			};
 			name = Release;
 		};

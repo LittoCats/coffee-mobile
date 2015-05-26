@@ -19,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        var vc = CMViewController()
+        
+        var vc = ViewController()
         vc.URI = NSURL(string: "http://127.0.0.1:8888/index.coffee")
-//        var vc = ViewController()
         window?.rootViewController = vc
         window?.backgroundColor = UIColor.whiteColor()
         window?.makeKeyAndVisible()

@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>8D679390-72B8-49AE-AA45-8B7C9CE5A25A</string>
 	<key>IDESourceControlProjectName</key>
-	<string>CoffeeMobile</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>6782612567CF1FCA4A4A3D0C76E42716BA95A37A</key>
 		<string>github.com:LittoCats/coffee-mobile.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CoffeeMobile.xcodeproj</string>
+	<string>CoffeeMobile.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>6782612567CF1FCA4A4A3D0C76E42716BA95A37A</key>
