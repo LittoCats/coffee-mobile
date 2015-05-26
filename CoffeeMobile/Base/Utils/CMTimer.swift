@@ -26,11 +26,17 @@ final class CMTimer {
     
     private var startTime: NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
     private var repeatCount: NSTimeInterval = 0
+    private weak var context: AnyObject?
     
-    private init(interval: NSTimeInterval, repeat: Bool = false, userInfo: AnyObject? = nil, strict: Bool = false, function: CMTimerFunction){
+    
+    private init(interval: NSTimeInterval, repeat: Bool = false, userInfo: AnyObject? = nil, strict: Bool = false, context: AnyObject? = nil, function: CMTimerFunction){
         self.touple = (userInfo, strict, repeat, interval, function)
-        
         self.thread = NSThread.currentThread()
+        if context == nil {
+            self.context = self
+        }else{
+            self.context = context
+        }
         
         if strict {
             excuteStrict(interval)
@@ -48,7 +54,16 @@ final class CMTimer {
             if !shouldStop && self.repeat{
                 self.repeatCount++
                 var nextExcuteTime = self.startTime + self.interval * self.repeatCount
-                self.excuteStrict(nextExcuteTime - NSDate.timeIntervalSinceReferenceDate())
+                var nowInterval = NSDate.timeIntervalSinceReferenceDate()
+                while nextExcuteTime <= nowInterval {
+                    self.excuteFunction(&shouldStop)
+                    if shouldStop {
+                        return
+                    }
+                    self.repeatCount++
+                    nextExcuteTime = self.startTime + self.interval * self.repeatCount
+                }
+                self.excuteStrict(nextExcuteTime - nowInterval)
             }
         }
     }
@@ -67,13 +82,21 @@ final class CMTimer {
     
     //
     private func excuteFunction(inout shouldStop: Bool) {
-        if thread == nil {shouldStop = true}
+        if thread == nil || self.context == nil {
+            shouldStop = true
+            return
+        }
         NSThread.evalOnThread(thread!, waitUntilDon: true) { () -> Void in
             shouldStop = self.function(timer: self)
         }
     }
     
-    static func timeOut(interval: NSTimeInterval, repeat: Bool = false, userInfo: AnyObject? = nil, strict: Bool = false, function: CMTimerFunction) {
-        CMTimer(interval: interval, repeat: repeat, userInfo: userInfo, strict: strict, function: function)
+    /**
+    MARK: GCD timer, 通过GCD任务管理的 timer ，触发时间受 runloop 影响，会有一定延迟
+    :param: strict 表是否是严格模式，严格模式下，触发次数不会受到 runloop 延迟影响， 并根据延迟情况，自动校正触发时间
+    :param: context timer 邦定的对像，对像释放后，timer 自动停止并释放
+    */
+    static func timeOut(interval: NSTimeInterval, repeat: Bool = false, userInfo: AnyObject? = nil, strict: Bool = false, context: AnyObject? = nil, function: CMTimerFunction) {
+        CMTimer(interval: interval, repeat: repeat, userInfo: userInfo, strict: strict,context: context, function: function)
     }
 }

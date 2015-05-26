@@ -26,8 +26,18 @@ class ViewController: CMViewController {
         CMLayout(button).CenterY.Equal.to(self.view).CenterY.constraint().addTo(self.view)
         
         Async.main { () -> Void in
-            var attrString = NSAttributedString(xml: "<size=29 color = #FF0000 st>text<size=15 color=#00FF00 ul=1> Label</></>")
+            var attrString = NSAttributedString(xml: "<size=29 color = yellow ><st stcolor=#00FFFF>text</><size=15 color=red ul ulcolor=gray>Label</></>")
             button.attributedText = attrString
+        }
+        
+        var count = 0
+        CMTimer.timeOut(1.2, repeat: true, userInfo: nil, strict: true, context: button) { (timer) -> (Bool) in
+            println(count++)
+            return false
+        }
+
+        Async.main(after: 6) { () -> Void in
+            button.removeFromSuperview()
         }
     }
     
