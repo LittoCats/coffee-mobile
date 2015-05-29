@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         var vc = ViewController()
-        vc.URI = NSURL(string: "http://127.0.0.1:8888/index.coffee")
+        vc.URL = NSURL(string: "http://127.0.0.1:8888/index.coffee")
         window?.rootViewController = vc
         window?.backgroundColor = UIColor.whiteColor()
         window?.makeKeyAndVisible()

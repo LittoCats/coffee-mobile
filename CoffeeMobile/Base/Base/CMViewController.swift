@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XMLNode
 
 class CMViewController: UIViewController {
     
@@ -34,11 +35,12 @@ class CMViewController: UIViewController {
     MARK:
     资源路径，javascript, 暂不支持重新载入
     */
-    var URI: NSURL! = NSURL(string: "blank://") {
+    var URL: NSURL! {
         didSet {
+            workPath = URL.URLByDeletingLastPathComponent
             var err = NSErrorPointer()
-            if var source = String(contentsOfURL: URI, encoding: NSUTF8StringEncoding, error: err) {
-                if let pathExtension = URI.pathExtension {
+            if var source = String(contentsOfURL: URL, encoding: NSUTF8StringEncoding, error: err) {
+                if let pathExtension = URL.pathExtension {
                     if pathExtension.lowercaseString == "coffee" {
                         source = compile(coffee: source)
                     }
@@ -49,7 +51,15 @@ class CMViewController: UIViewController {
             assert(context != nil, "CMViewController error")
         }
     }
+    var workPath: NSURL!
 
+    override func loadView() {
+        if let xml = context["loadView"].toClosure()?().toString() {
+            self.view = UIView.view(xml)
+        }else{
+            self.view = UIView()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

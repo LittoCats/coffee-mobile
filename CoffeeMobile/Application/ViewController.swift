@@ -26,19 +26,21 @@ class ViewController: CMViewController {
         CMLayout(button).CenterY.Equal.to(self.view).CenterY.constraint().addTo(self.view)
         
         Async.main { () -> Void in
-            var attrString = NSAttributedString(xml: "<size=29 color = yellow ><st stcolor=#00FFFF>text</><size=15 color=red ul ulcolor=gray>Label</></>")
+            var attrString = NSAttributedString(xml: "<t size='15' color='#FF0000' stroke='5'>确定</t><t st='1' stcolor='#00FFFF'>我中划线</t>")
             button.attributedText = attrString
         }
         
-        var count = 0
-        CMTimer.timeOut(1.2, repeat: true, userInfo: nil, strict: true, context: button) { (timer) -> (Bool) in
-            println(count++)
-            return false
-        }
+//        var count = 0
+//        CMTimer.timeOut(1.2, repeat: true, userInfo: nil, strict: true, context: button) { (timer) -> (Bool) in
+//            println(count++)
+//            return false
+//        }
 
-        Async.main(after: 6) { () -> Void in
-            button.removeFromSuperview()
-        }
+//        Async.main(after: 6) { () -> Void in
+//            button.removeFromSuperview()
+//        }
+        var name = "width"
+        var script = "root.width-2*3"
     }
     
     

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import XMLNode
 
 extension NSAttributedString {
     
@@ -21,98 +22,71 @@ extension NSAttributedString {
     }
     
     convenience init(xml: String, defaultAttribute: [String: AnyObject]){
-        self.init(attributedString: XMLParser(xml: xml,defaultAttribute: defaultAttribute).parse().maString)
+        self.init(attributedString: XMLParser(xml: xml,defaultAttribute: defaultAttribute).start().maString)
     }
     
-    private class XMLParser {
+    private class XMLParser: NSObject, NSXMLParserDelegate {
         private var maString = NSMutableAttributedString()
+        private var xml: String!
         private var attrStack = [[String: AnyObject]]()
-        private var xml: NSString!
-        private var regex: NSRegularExpression = NSRegularExpression(pattern: "([<][^<>]*>)", options: NSRegularExpressionOptions.allZeros, error: nil)!
+        
         
         init(xml: String, defaultAttribute: [String: AnyObject]){
-            var str = xml
-            for (reg, re) in ["\\>": "&more", "\\<": "&less", "<br>": "\n"] {
-                str = str.stringByReplacingOccurrencesOfString("\\>", withString: "&more", options: NSStringCompareOptions.allZeros, range: nil)
-            }
+            super.init()
             attrStack.append(defaultAttribute)
-            self.xml = str as String
+            self.xml = "<xml a='b'>\(xml)</xml>"
         }
         
-        func parse()->XMLParser {
-            regex.enumerateMatchesInString(xml as String, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, xml.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))) {[unowned self] (result: NSTextCheckingResult!, flage: NSMatchingFlags, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
-                // 标签
-                var label = self.xml.substringWithRange(result.range)
-                self.analyzeLabel(label)
-                // 文本
-                var strStart = result.range.location + result.range.length
-                var range = self.xml.rangeOfString("[^<>]*", options: NSStringCompareOptions.RegularExpressionSearch, range: NSMakeRange(strStart, self.xml.length - strStart))
-                var str = self.xml.substringWithRange(range)
-                if str.isEmpty {return}
-                self.buildString(str)
-            }
+        func start()-> XMLParser {
+            let parser = NSXMLParser(data: xml.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
+            parser.delegate = self
+            var flag = parser.parse()
             return self
         }
         
+        
         //MARK: 解析标签
-        private func analyzeLabel(label: String){
-            var str = label
-            // 去除 <> 及多余的空格
-            for (reg, re) in ["^<[\\s]*": "", "[\\s]*>$": "", "[\\s]+": " ", "[\\s]*=[\\s]*": "="] {
-                str = str.stringByReplacingOccurrencesOfString(reg, withString: re, options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
+
+        @objc func parserDidStartDocument(parser: NSXMLParser){
+            if attrStack.isEmpty {
+                attrStack.append([String: AnyObject]())
             }
+        }
+        
+        @objc func parserDidEndDocument(parser: NSXMLParser){
             
-            // 如果是结束标签，则从 stack 中移除最后组属性
-            if str.hasPrefix("/"){
-                attrStack.removeLast()
-                return
-            }
-            
-            if str.hasSuffix("/") {return}
-            
-            // 解析属性，包含单值表达式（只有key）和赋值表达式（key=value)两种情况, 单值表达式，将做为key value 相同的赋值表达式
-            var arr = str.componentsSeparatedByString(" ")
-            var kv: [String]
-            var kvs: [String: AnyObject]!
-            var attr: [String: AnyObject]
-            
-            if let at = attrStack.last { attr = at}
-            else {attr = [String: AnyObject]()}
-            
-            for item in arr {
-                kv = item.componentsSeparatedByString("=")
-                if kv.count == 1 {
-                    var key = kv[0].lowercaseString
-                    kvs = analyzeExpression(key, value: key)
-                }else if kv.count == 2 {
-                    kvs = analyzeExpression(kv[0].lowercaseString, value: kv[1].lowercaseString)
-                }
-                
-                if kvs != nil {
-                    for (k,v) in kvs {
-                        attr[k] = v
+        }
+        
+        @objc func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [NSObject : AnyObject]){
+            var attr = attrStack.last!
+            for (key, value) in attributeDict {
+                if let name = (key as? String)?.lowercaseString {
+                    if let closure = XMLParser.ExpressionMap[(key as! String).lowercaseString] {
+                        for (k,v) in closure(key: name, value: value as! String){
+                            attr[k] = v
+                        }
                     }
                 }
             }
             attrStack.append(attr)
         }
         
-        
-        //MARK: 解析赋值表达式（key=value)
-        private func analyzeExpression(key: String, value: String) ->[String: AnyObject] {
-            if let analyzer = XMLParser.ExpressionMap[key] {
-                return analyzer(key: key, value: value)
-            }else{
-                return [String: AnyObject]()
+        @objc func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?){
+            attrStack.removeLast()
+        }
+        @objc func parser(parser: NSXMLParser, foundCharacters string: String?){
+            if let str = string {
+                buildString(str)
             }
         }
+        @objc func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError){
+            println(parseError)
+        }
+        
         
         //MARK: 解析文本
         private func buildString(str: String) {
             var string = str
-            for (reg, re) in [">": "&more", "<": "&less"] {
-                string = string.stringByReplacingOccurrencesOfString(re, withString: reg, options: NSStringCompareOptions.allZeros, range: nil)
-            }
             if var at = attrStack.last{
                 // font
                 var font: UIFont?
@@ -219,13 +193,13 @@ extension NSAttributedString.XMLParser {
         
         // paragraph
         // text align
-        "-|": {EXP in [CMTextAlignmentAttributeName: NSTextAlignment.Right.rawValue]},
-        "||": {EXP in [CMTextAlignmentAttributeName: NSTextAlignment.Center.rawValue]},
-        "|-": {EXP in [CMTextAlignmentAttributeName: NSTextAlignment.Left.rawValue]},
-        "center": {EXP in [CMTextAlignmentAttributeName: NSTextAlignment.Center.rawValue]},
-        "right": {EXP in [CMTextAlignmentAttributeName: NSTextAlignment.Left.rawValue]},
-        "left":  {EXP in [CMTextAlignmentAttributeName: NSTextAlignment.Right.rawValue]},
-        
+        "algin": { EXP in
+            switch EXP.1 {
+                case "-|","right": return [CMTextAlignmentAttributeName: NSTextAlignment.Right.rawValue]
+                case "||","center": return [CMTextAlignmentAttributeName: NSTextAlignment.Center.rawValue]
+                default: return [CMTextAlignmentAttributeName: NSTextAlignment.Left.rawValue]
+            }
+        },
         // 缩紧
         "firstlineindent": {EXP in [CMTextFirstLineHeadIndentAttributeName: FloatValue(EXP.1)]},
         "flindent": {EXP in [CMTextFirstLineHeadIndentAttributeName: FloatValue(EXP.1)]},
