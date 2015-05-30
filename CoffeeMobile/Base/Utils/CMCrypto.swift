@@ -4,8 +4,6 @@
 //
 //  Created by 程巍巍 on 3/19/15.
 //  Copyright (c) 2015 Littocats. All rights reserved.
-//  
-//  需在 Bridg_Header.h 中 #import <CommonCrypto/CommonCrypto.h>
 
 import Foundation
 import CommonCrypto
@@ -125,6 +123,7 @@ struct CMCrypto {
         case DES3
         
         var keySize: Int{
+            // 32 位平台，swift 在进行类型检查时，0xFFFF0000 超出了 整型范围（32 整型，最高位为符号位）,因此先将 rawValue  转为无符号整型，最后再转回整型
             return Int(UInt(self.rawValue) & 0xFFFF0000) >> 16
         }
         var algorithm: CCAlgorithm{

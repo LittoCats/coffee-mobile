@@ -112,7 +112,7 @@ extension UIView {
             "trailing": [NSLayoutAttribute.Trailing],
             "centerx":  [NSLayoutAttribute.CenterX],
             "centery":  [NSLayoutAttribute.CenterY],
-            "ratio":    [NSLayoutAttribute.Width,NSLayoutAttribute.Height]
+            "ratio":    [NSLayoutAttribute.Height,NSLayoutAttribute.Width]
         ]
     }
     
@@ -255,20 +255,17 @@ extension UIView {
                 conf["secondattribute"] = NSLayoutAttribute.NotAnAttribute.rawValue
                 
                 // second secondattribute
-                if let range = script.rangeOfString("^[a-zA-Z]+[a-zA-Z0-9\\.]*", options: .RegularExpressionSearch, range: nil, locale: nil) {
+                if let range = script.rangeOfString("^[a-zA-Z\\.]+", options: .RegularExpressionSearch, range: nil, locale: nil) {
                     if !range.isEmpty {
                         var sub = script.substringWithRange(range)
                         var arr = sub.componentsSeparatedByString(".")
                         // 此处出可以设置为： second attribute 与 first attribute 相同，可以省略
                         conf["second"] = arr[0]
-                        if arr.count > 1 {
+                        if arr.count > 1 && !arr[1].isEmpty{
                             conf["secondattribute"] = arr[1]
                         }else{
                             conf["secondattribute"] = name
                         }
-//                        assert(arr.count == 2, "XML Constraint Script error : \(name)='\(script)'")
-//                        conf["second"] = arr[0]
-//                        conf["secondattribute"] = arr[1]
                     }
                 }
                 if let range = script.rangeOfString("[0-9-+*]+[0-9\\.]*$", options: .RegularExpressionSearch, range: nil, locale: nil){
@@ -297,11 +294,13 @@ extension UIView {
                     }else{
                         // 在兄弟间查找
                         for brother in self.superview!.subviews as! [UIView] {
-                            if secondId == brother.xml?.attributeForName("id").stringValue() {
+                            if secondId == brother.xml?.attributeForName("id")?.stringValue() {
                                 conf["second"] = brother
                             }
                         }
                     }
+                }else if name == "ratio" {
+                    conf["second"] = self
                 }
                 
                 var firstView = conf["first"] as! UIView
@@ -329,14 +328,7 @@ extension UIView {
     }
 }
 
-extension UIView {
-    /**
-    MARK: DOM 选择器
-    :   $("View")   选择 class 为 View 的元素，返回数组
-    :   $(".root")  选择 id 为 root 的元素，返回数组
-    :   $("#root")  选择 tag 为 root 的元素, 返回数组
-    */
-}
+
 
 class CMView: UIView, XMLViewProtocol {
     
