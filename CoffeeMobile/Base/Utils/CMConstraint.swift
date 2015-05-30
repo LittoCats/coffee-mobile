@@ -88,7 +88,8 @@ struct CMLayout {
 }
 
 extension NSLayoutConstraint {
-    func addTo(view: UIView) {
+    func addTo(view: UIView)->Self {
         view.addConstraint(self)
+        return self
     }
 }

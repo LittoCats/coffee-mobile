@@ -44,6 +44,7 @@ extension UIView {
         private static var xmlAssociatedKey = "xmlAssociatedKey"
         private static var contextAssociatedKey = "contextAssociatedKey"
         private static var uidMap = NSMapTable.strongToWeakObjectsMapTable()
+        private static var constraintUIDMap = NSMapTable.strongToWeakObjectsMapTable()
         
         private static var XMLViewRootClassMap: [String: XMLViewConstructor] = [
             "View": {CMView()}
@@ -235,7 +236,8 @@ extension UIView {
     */
     private func loadXMLConstraints() {
         for name in ["width", "height", "centerx", "centery", "left", "right", "top", "bottom", "ratio"] {
-            if let script: String = xml?.attributeForName(name)?.stringValue() {
+            var constraintNode = xml?.attributeForName(name)
+            if let script: String = constraintNode?.stringValue() {
                 if script.isEmpty {continue}
                 /**
                 解析 constraint script 为 [first, firstattribute, relation, second, secondattribute, constant, multiper]。
@@ -253,25 +255,31 @@ extension UIView {
                 conf["secondattribute"] = NSLayoutAttribute.NotAnAttribute.rawValue
                 
                 // second secondattribute
-                if let range = script.rangeOfString("^[a-zA-Z\\.]*", options: .RegularExpressionSearch, range: nil, locale: nil) {
+                if let range = script.rangeOfString("^[a-zA-Z]+[a-zA-Z0-9\\.]*", options: .RegularExpressionSearch, range: nil, locale: nil) {
                     if !range.isEmpty {
                         var sub = script.substringWithRange(range)
                         var arr = sub.componentsSeparatedByString(".")
-                        assert(arr.count == 2, "XML Constraint Script error : \(name)='\(script)'")
+                        // 此处出可以设置为： second attribute 与 first attribute 相同，可以省略
                         conf["second"] = arr[0]
-                        conf["secondattribute"] = arr[1]
+                        if arr.count > 1 {
+                            conf["secondattribute"] = arr[1]
+                        }else{
+                            conf["secondattribute"] = name
+                        }
+//                        assert(arr.count == 2, "XML Constraint Script error : \(name)='\(script)'")
+//                        conf["second"] = arr[0]
+//                        conf["secondattribute"] = arr[1]
                     }
                 }
-                if let range = script.rangeOfString("[0-9-+*]+[0-9\\.]*", options: .RegularExpressionSearch, range: nil, locale: nil){
+                if let range = script.rangeOfString("[0-9-+*]+[0-9\\.]*$", options: .RegularExpressionSearch, range: nil, locale: nil){
                     if !range.isEmpty {
                         var sub = script.substringWithRange(range)
                         var arr = sub.componentsSeparatedByString("*")
-                        println(arr)
                         if arr.count > 0 { conf["constant"] = (arr[0] as NSString).floatValue}
                         if arr.count > 1 { conf["multiplier"] = (arr[1] as NSString).floatValue}
                     }
                 }
-                
+
                 if let secondattribute = conf["secondattribute"] as? String {
                     if let attArr =  XMLStatic.XMLViewConstraintAttributeMap[secondattribute]{
                         conf["secondattribute"] = attArr[0].rawValue
@@ -307,12 +315,10 @@ extension UIView {
                     firstView.superview?.addConstraint(constraint)
                 }
                 
-                if let constraint = (self as? XMLViewProtocol)?.constrainForName?(name, script: script) {
-                }else{
-                    
-                }
-                
-                
+                // 将 constraint 关联至 xmlnode 中，以便搜索到
+                var layoutConstraintid = String(format:"%@:%p",script,constraint)
+                XMLStatic.constraintUIDMap.setObject(constraint, forKey: layoutConstraintid)
+                constraintNode?.setStringValue(layoutConstraintid)
             }
         }
         for subview in self.subviews as! [UIView]{

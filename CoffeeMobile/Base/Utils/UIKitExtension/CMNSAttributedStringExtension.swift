@@ -34,7 +34,7 @@ extension NSAttributedString {
         init(xml: String, defaultAttribute: [String: AnyObject]){
             super.init()
             attrStack.append(defaultAttribute)
-            self.xml = "<xml a='b'>\(xml)</xml>"
+            self.xml = "<xml>\(xml)</xml>"
         }
         
         func start()-> XMLParser {

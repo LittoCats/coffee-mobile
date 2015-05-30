@@ -9,38 +9,40 @@
 import UIKit
 
 class ViewController: CMViewController {
+//class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        var button = UILabel()
-//        button.setTitle("CMConstraint", forState: UIControlState.Normal)
+        var button = UIButton()
+        button.setTitle("CMConstraint", forState: UIControlState.Normal)
+        button.backgroundColor = UIColor.blackColor()
         
         button.sizeToFit()
         
         self.view.addSubview(button)
         
-        CMLayout(button).CenterX.Equal.to(self.view).CenterX.constraint().addTo(self.view)
-        CMLayout(button).CenterY.Equal.to(self.view).CenterY.constraint().addTo(self.view)
+        CMLayout(button).Top.Equal.to(self.view).Top.constraint(64.1).addTo(self.view)
+        CMLayout(button).Left.Equal.to(self.view).Left.constraint().addTo(self.view)
         
-        Async.main { () -> Void in
-            var attrString = NSAttributedString(xml: "<t size='15' color='#FF0000' stroke='5'>确定</t><t st='1' stcolor='#00FFFF'>我中划线</t>")
-            button.attributedText = attrString
-        }
+        var view = UIView()
+        self.view.addSubview(view)
+        var constraint = CMLayout(view).Top.Equal.to(self.view).Top.constraint(100, 1).addTo(self.view)
+        CMLayout(view).Leading.Equal.to(self.view).Leading.constraint(20, 1).addTo(self.view)
+        CMLayout(view).Height.Equal.constraint(44, 1).addTo(self.view)
+        CMLayout(view).Width.Equal.constraint(120, 1).addTo(self.view)
         
-//        var count = 0
-//        CMTimer.timeOut(1.2, repeat: true, userInfo: nil, strict: true, context: button) { (timer) -> (Bool) in
-//            println(count++)
-//            return false
-//        }
+        view.backgroundColor = UIColor(hex: "#0088DD")
 
-//        Async.main(after: 6) { () -> Void in
-//            button.removeFromSuperview()
-//        }
-        var name = "width"
-        var script = "root.width-2*3"
+        button.handle(events: UIControlEvents.TouchUpInside) { [weak self](sender, event) -> Void in
+            UIView.animateWithDuration(1.25, animations: { () -> Void in
+                constraint.constant = CGFloat(arc4random()%480) * (arc4random()%2 > 0 ? -1 : 1)
+                self?.view.layoutIfNeeded()
+            })
+        }
+
     }
     
     
